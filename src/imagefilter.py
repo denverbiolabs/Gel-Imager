@@ -18,4 +18,5 @@ if __name__ == "__main__":
 
     #Set all shades to black below a given threshold
     threshold = 100
-    image_bw.point(lambda p: 0 if p < threshold else p).show()
+    image_filtered = image_bw.point(lambda p: 0 if p < threshold else p)
+    image_filtered.save("test_out.png")
