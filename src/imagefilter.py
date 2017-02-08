@@ -2,8 +2,23 @@
 import sys
 
 import numpy as np
+import matplotlib.pyplot as plt
 from scipy.signal import argrelmin
 from PIL import Image
+
+def draw_histogram(img, minima=[]):
+    """Draw a histogram of the pixel values in the image.
+
+    minima: An array of indices of hist representing local minima.
+    """
+    hist = img.histogram()
+    fig = plt.figure()
+    ind = range(len(hist))
+    plt.bar(ind, hist, width=1)
+    for minimum in minima:
+        plt.axvline(minimum, color="red")
+    plt.show()
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
